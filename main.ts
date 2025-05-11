@@ -24,12 +24,14 @@ import { DynamodbTable } from "./base/Dynamodb";
 import { DbInstance } from "./base/RDS";
 import { SqsQueue } from "./base/SQS";
 
-import { AwsProvider } from "./base/AWSProvider";
+import { AwsProvider, S3Backend, TerraformOutput } from "./base/AWSProvider";
 
 import { ManagedS3 } from "./managed/S3Bucket";
 
 export {
   AwsProvider,
+  S3Backend,
+  TerraformOutput,
   
   // S3
   S3Bucket,
