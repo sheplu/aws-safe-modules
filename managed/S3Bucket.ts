@@ -7,20 +7,22 @@ export class ManagedS3 extends Construct {
 	constructor(scope: Construct, id: string, config: any) {
 		super(scope, `asm-m/${id}`);
 
-		this.instance = new S3Bucket(scope, id, config);
+		// this.instance = new S3Bucket(scope, id, config);
 
-        const myBucket = new S3Bucket(this, 'myBucket', {
+        const myBucket = new S3Bucket(this, `${id}`, {
 			bucket: config.bucket,
 		});
 
-		new S3BucketOwnershipControls(this, 'myBucket-ownership', {
+		this.instance = myBucket;
+
+		new S3BucketOwnershipControls(this, `${id}-ownership`, {
 			bucket: myBucket.id,
 			rule: {
 				objectOwnership: "BucketOwnerPreferred",
 			},
 		});
 
-		const myBucketVersioning = new S3BucketVersioningA(this, 'myBucket-versioning', {
+		const myBucketVersioning = new S3BucketVersioningA(this, `${id}-versioning`, {
 			bucket: myBucket.id,
 			versioningConfiguration: {
 				status: 'Enabled',
@@ -28,7 +30,7 @@ export class ManagedS3 extends Construct {
 			},
 		});
 
-		new S3BucketLifecycleConfiguration(this, 'myBucket-lifecycle', {
+		new S3BucketLifecycleConfiguration(this, `${id}-lifecycle`, {
 			bucket: myBucket.id,
 			rule: [{
 				id: 'default-lifecycle',
@@ -44,7 +46,7 @@ export class ManagedS3 extends Construct {
 			dependsOn: [myBucketVersioning],
 		});
 
-		const myBucketPolicy = new DataAwsIamPolicyDocument(this, 'myBucket-iam-policy', {
+		const myBucketPolicy = new DataAwsIamPolicyDocument(this, `${id}-iam-policy`, {
 			statement: [{
 				actions: ['s3:*'],
 				resources: [`${myBucket.arn}/*`],
@@ -61,7 +63,7 @@ export class ManagedS3 extends Construct {
 			}],
 		});
 
-		new S3BucketPolicy(this, 'myBucket-policy', {
+		new S3BucketPolicy(this, `${id}-policy`, {
 			bucket: myBucket.id,
 			policy: myBucketPolicy.json
 		});
