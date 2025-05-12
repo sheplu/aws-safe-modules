@@ -1,28 +1,27 @@
 import { Construct } from 'constructs';
-import { DataAwsIamPolicyDocument, S3Bucket, S3BucketLifecycleConfiguration, S3BucketOwnershipControls, S3BucketPolicy, S3BucketVersioningA } from '../main';
+import { DataAwsIamPolicyDocument, S3Bucket, S3BucketLifecycleConfiguration, S3BucketObjectLockConfigurationA, S3BucketOwnershipControls, S3BucketPolicy, S3BucketVersioningA } from '../main';
 
 export class ManagedS3 extends Construct {
 	public instance: Construct;
 
 	constructor(scope: Construct, id: string, config: any) {
-		super(scope, `asm-m/${id}`);
+		super(scope, id);
 
-		// this.instance = new S3Bucket(scope, id, config);
-
-        const myBucket = new S3Bucket(this, `${id}`, {
+        const myBucket = new S3Bucket(this, 'bucket', {
 			bucket: config.bucket,
+			objectLockEnabled: config.worm ? true : false
 		});
 
 		this.instance = myBucket;
 
-		new S3BucketOwnershipControls(this, `${id}-ownership`, {
+		new S3BucketOwnershipControls(this, 'bucket-ownership', {
 			bucket: myBucket.id,
 			rule: {
 				objectOwnership: "BucketOwnerPreferred",
 			},
 		});
 
-		const myBucketVersioning = new S3BucketVersioningA(this, `${id}-versioning`, {
+		const myBucketVersioning = new S3BucketVersioningA(this, 'bucket-versioning', {
 			bucket: myBucket.id,
 			versioningConfiguration: {
 				status: 'Enabled',
@@ -30,7 +29,7 @@ export class ManagedS3 extends Construct {
 			},
 		});
 
-		new S3BucketLifecycleConfiguration(this, `${id}-lifecycle`, {
+		new S3BucketLifecycleConfiguration(this, 'bucket-lifecycle', {
 			bucket: myBucket.id,
 			rule: [{
 				id: 'default-lifecycle',
@@ -46,7 +45,7 @@ export class ManagedS3 extends Construct {
 			dependsOn: [myBucketVersioning],
 		});
 
-		const myBucketPolicy = new DataAwsIamPolicyDocument(this, `${id}-iam-policy`, {
+		const myBucketPolicy = new DataAwsIamPolicyDocument(this, 'bucket-iam-policy', {
 			statement: [{
 				actions: ['s3:*'],
 				resources: [`${myBucket.arn}/*`],
@@ -63,9 +62,21 @@ export class ManagedS3 extends Construct {
 			}],
 		});
 
-		new S3BucketPolicy(this, `${id}-policy`, {
+		new S3BucketPolicy(this, 'bucket-policy', {
 			bucket: myBucket.id,
 			policy: myBucketPolicy.json
 		});
+
+		if(config.worm) {
+			new S3BucketObjectLockConfigurationA(this, 'bucket-lock-configuration', {
+                bucket: myBucket.id,
+                rule: {
+                    defaultRetention: {
+                        days: 10,
+                        mode: 'GOVERNANCE',
+                    },
+                },
+            });
+		}
 	}
 }
