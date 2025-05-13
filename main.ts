@@ -27,6 +27,7 @@ import { SqsQueue } from "./base/SQS";
 import { AwsProvider, S3Backend, TerraformOutput } from "./base/AWSProvider";
 
 import { ManagedS3 } from "./managed/S3Bucket";
+import { ManagedWAF } from "./managed/WAFv2";
 
 export {
   AwsProvider,
@@ -81,4 +82,5 @@ export {
 
   // Managed
   ManagedS3,
+  ManagedWAF,
 }
