@@ -26,7 +26,7 @@ export class S3Backend extends aws_S3Backend {
 };
 
 export class TerraformOutput extends aws_TerraformOutput {
-    constructor(scope: Construct, id: string, config: TerraformOutputConfig, withoutNamespace: boolean) {
+    constructor(scope: Construct, id: string, config: TerraformOutputConfig, withoutNamespace: boolean = false) {
         const checkedConfig = { ...config };
         const namespacedId = withoutNamespace ? id : `asm/${id}`
 
