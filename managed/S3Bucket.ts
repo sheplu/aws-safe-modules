@@ -2,7 +2,7 @@ import { Construct } from 'constructs';
 import { DataAwsIamPolicyDocument, S3Bucket, S3BucketLifecycleConfiguration, S3BucketObjectLockConfigurationA, S3BucketOwnershipControls, S3BucketPolicy, S3BucketVersioningA } from '../main';
 
 export class ManagedS3 extends Construct {
-	public instance: Construct;
+	public readonly instance: any;
 
 	constructor(scope: Construct, id: string, config: any) {
 		super(scope, id);
