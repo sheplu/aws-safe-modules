@@ -2,7 +2,7 @@ import { Construct } from 'constructs';
 import { CloudwatchLogGroup, CloudwatchLogResourcePolicy, DataAwsIamPolicyDocument, Wafv2WebAcl, Wafv2WebAclLoggingConfiguration } from '../main';
 
 export class ManagedWAF extends Construct {
-	public instance: Construct;
+	public readonly instance: any;
 
 	constructor(scope: Construct, id: string, config: any) {
 		super(scope, id);
