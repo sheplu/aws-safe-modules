@@ -24,6 +24,16 @@ import { DynamodbTable } from "./base/Dynamodb";
 import { DbInstance } from "./base/RDS";
 import { SqsQueue } from "./base/SQS";
 import { SsmParameter } from "./base/SSM";
+import {
+  DataAwsSubnets,
+  DataAwsVpc,
+  DataAwsVpcEndpointService,
+  SecurityGroup,
+  VpcEndpoint,
+  VpcSecurityGroupEgressRule,
+  VpcSecurityGroupIngressRule,
+  Vpc
+} from "./base/VPC";
 
 import { AwsProvider, S3Backend, TerraformOutput } from "./base/AWSProvider";
 
@@ -83,6 +93,16 @@ export {
 
   // SSM
   SsmParameter,
+
+  // VPC
+  DataAwsSubnets,
+  DataAwsVpc,
+  DataAwsVpcEndpointService,
+  SecurityGroup,
+  VpcEndpoint,
+  VpcSecurityGroupEgressRule,
+  VpcSecurityGroupIngressRule,
+  Vpc,
 
   // Managed
   ManagedS3,
