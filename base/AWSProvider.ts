@@ -2,6 +2,7 @@ import { Construct } from 'constructs';
 import { AwsProvider as aws_AwsProvider, AwsProviderConfig, AwsProviderDefaultTags } from "@cdktf/provider-aws/lib/provider";
 import { validate } from '../check-tags';
 import { S3Backend as aws_S3Backend, S3BackendConfig, TerraformOutput as aws_TerraformOutput, TerraformOutputConfig } from 'cdktf';
+import { DataAwsCallerIdentity as aws_DataAwsCallerIdentity, DataAwsCallerIdentityConfig } from '@cdktf/provider-aws/lib/data-aws-caller-identity';
 
 export class AwsProvider extends aws_AwsProvider {
     constructor(scope: Construct, id: string, config: AwsProviderConfig) {
@@ -31,5 +32,13 @@ export class TerraformOutput extends aws_TerraformOutput {
         const namespacedId = withoutNamespace ? id : `asm/${id}`
 
         super(scope, namespacedId, checkedConfig);
+    }
+};
+
+export class DataAwsCallerIdentity extends aws_DataAwsCallerIdentity {
+    constructor(scope: Construct, id: string, config: DataAwsCallerIdentityConfig) {
+        const checkedConfig = { ...config };
+
+        super(scope, id, checkedConfig);
     }
 };

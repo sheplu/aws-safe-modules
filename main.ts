@@ -24,6 +24,7 @@ import { DynamodbTable } from "./base/Dynamodb";
 import { DbInstance } from "./base/RDS";
 import { SqsQueue } from "./base/SQS";
 import { SsmParameter } from "./base/SSM";
+import { DataAwsRoute53Zone } from "./base/Route53";
 import {
   DataAwsSubnets,
   DataAwsVpc,
@@ -35,7 +36,7 @@ import {
   Vpc
 } from "./base/VPC";
 
-import { AwsProvider, S3Backend, TerraformOutput } from "./base/AWSProvider";
+import { AwsProvider, S3Backend, TerraformOutput, DataAwsCallerIdentity } from "./base/AWSProvider";
 
 import { ManagedS3 } from "./managed/S3Bucket";
 import { ManagedWAF } from "./managed/WAFv2";
@@ -44,6 +45,10 @@ export {
   AwsProvider,
   S3Backend,
   TerraformOutput,
+  DataAwsCallerIdentity,
+
+  // Route53
+  DataAwsRoute53Zone,
   
   // S3
   S3Bucket,
