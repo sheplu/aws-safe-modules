@@ -5,6 +5,7 @@ import { SecurityGroup as aws_SecurityGroup, SecurityGroupConfig } from '@cdktf/
 import { VpcEndpoint as aws_VpcEndpoint, VpcEndpointConfig } from '@cdktf/provider-aws/lib/vpc-endpoint';
 import { VpcSecurityGroupEgressRule as aws_VpcSecurityGroupEgressRule, VpcSecurityGroupEgressRuleConfig } from '@cdktf/provider-aws/lib/vpc-security-group-egress-rule';
 import { VpcSecurityGroupIngressRule as aws_VpcSecurityGroupIngressRule, VpcSecurityGroupIngressRuleConfig } from '@cdktf/provider-aws/lib/vpc-security-group-ingress-rule';
+import { Vpc as aws_Vpc, VpcConfig } from '@cdktf/provider-aws/lib/vpc';
 import { Construct } from 'constructs';
 
 export class DataAwsSubnets extends aws_DataAwsSubnets {
@@ -57,6 +58,14 @@ export class VpcSecurityGroupEgressRule extends aws_VpcSecurityGroupEgressRule {
 
 export class VpcSecurityGroupIngressRule extends aws_VpcSecurityGroupIngressRule {
     constructor(scope: Construct, id: string, config: VpcSecurityGroupIngressRuleConfig) {
+        const checkedConfig = { ...config };
+
+        super(scope, `asm/${id}`, checkedConfig);
+    }
+};
+
+export class Vpc extends aws_Vpc {
+    constructor(scope: Construct, id: string, config: VpcConfig) {
         const checkedConfig = { ...config };
 
         super(scope, `asm/${id}`, checkedConfig);
