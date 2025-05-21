@@ -2,6 +2,7 @@ import { DataAwsIamPolicyDocument as aws_DataAwsIamPolicyDocument, DataAwsIamPol
 import { IamPolicy as aws_IamPolicy, IamPolicyConfig } from '@cdktf/provider-aws/lib/iam-policy';
 import { IamPolicyAttachment as aws_IamPolicyAttachment, IamPolicyAttachmentConfig } from '@cdktf/provider-aws/lib/iam-policy-attachment';
 import { IamRole as aws_IamRole, IamRoleConfig } from '@cdktf/provider-aws/lib/iam-role';
+import { IamRolePolicy as aws_IamRolePolicy, IamRolePolicyConfig } from '@cdktf/provider-aws/lib/iam-role-policy';
 import { Construct } from 'constructs';
 
 export class DataAwsIamPolicyDocument extends aws_DataAwsIamPolicyDocument {
@@ -33,6 +34,15 @@ export class IamRole extends aws_IamRole {
 export class IamPolicyAttachment extends aws_IamPolicyAttachment {
   constructor(scope: Construct, id: string, config: IamPolicyAttachmentConfig) {
     const checkedConfig = { ...config };
+
+    super(scope, `asm/${id}`, checkedConfig);
+  }
+};
+
+export class IamRolePolicy extends aws_IamRolePolicy {
+  constructor(scope: Construct, id: string, config: IamRolePolicyConfig) {
+    const checkedConfig = { ...config };
+    checkedConfig.name = `${config?.name}-iamrp`;
 
     super(scope, `asm/${id}`, checkedConfig);
   }

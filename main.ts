@@ -13,7 +13,8 @@ import {
   DataAwsIamPolicyDocument,
   IamPolicy,
   IamPolicyAttachment,
-  IamRole
+  IamRole,
+  IamRolePolicy
 } from "./base/IAM";
 import { EcrRepository, EcrLifecyclePolicy } from "./base/ECR";
 import { Wafv2WebAcl, Wafv2WebAclLoggingConfiguration, WafIpset } from "./base/WAFv2";
@@ -36,7 +37,13 @@ import {
   Vpc
 } from "./base/VPC";
 
-import { AwsProvider, S3Backend, TerraformOutput, DataAwsCallerIdentity } from "./base/AWSProvider";
+import {
+  AwsProvider,
+  S3Backend,
+  TerraformOutput,
+  DataAwsCallerIdentity,
+  ApiGatewayAccount
+} from "./base/AWSProvider";
 
 import { ManagedS3 } from "./managed/S3Bucket";
 import { ManagedWAF } from "./managed/WAFv2";
@@ -46,6 +53,7 @@ export {
   S3Backend,
   TerraformOutput,
   DataAwsCallerIdentity,
+  ApiGatewayAccount,
 
   // Route53
   DataAwsRoute53Zone,
@@ -65,6 +73,7 @@ export {
   IamPolicy,
   IamPolicyAttachment,
   IamRole,
+  IamRolePolicy,
 
   // ECR
   EcrRepository,
