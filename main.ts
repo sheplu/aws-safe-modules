@@ -19,7 +19,15 @@ import {
 import { EcrRepository, EcrLifecyclePolicy } from "./base/ECR";
 import { Wafv2WebAcl, Wafv2WebAclLoggingConfiguration, WafIpset } from "./base/WAFv2";
 import { CloudwatchLogGroup, CloudwatchLogResourcePolicy } from "./base/CloudWatch";
-import { CloudfrontDistribution, CloudfrontFunction, CloudfrontOriginAccessControl } from "./base/Cloudfront";
+import { 
+  CloudfrontDistribution,
+  CloudfrontFunction,
+  CloudfrontOriginAccessControl,
+  CloudfrontKeyGroup,
+  CloudfrontKeyValueStore,
+  CloudfrontOriginAccessIdentity,
+  CloudfrontPublicKey
+} from "./base/Cloudfront";
 import { LambdaFunction } from "./base/Lambda";
 import { DynamodbTable } from "./base/Dynamodb";
 import { DbInstance } from "./base/RDS";
@@ -92,6 +100,10 @@ export {
   CloudfrontDistribution,
   CloudfrontFunction,
   CloudfrontOriginAccessControl,
+  CloudfrontKeyGroup,
+  CloudfrontKeyValueStore,
+  CloudfrontOriginAccessIdentity,
+  CloudfrontPublicKey,
 
   // Lambda
   LambdaFunction,
