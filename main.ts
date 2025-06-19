@@ -17,7 +17,7 @@ import {
   IamRolePolicy
 } from "./base/IAM";
 import { EcrRepository, EcrLifecyclePolicy } from "./base/ECR";
-import { Wafv2WebAcl, Wafv2WebAclLoggingConfiguration, WafIpset } from "./base/WAFv2";
+import { Wafv2WebAcl, Wafv2WebAclLoggingConfiguration, WafIpset, Wafv2WebAclAssociation } from "./base/WAFv2";
 import { CloudwatchLogGroup, CloudwatchLogResourcePolicy } from "./base/CloudWatch";
 import { 
   CloudfrontDistribution,
@@ -91,6 +91,7 @@ export {
   Wafv2WebAcl,
   Wafv2WebAclLoggingConfiguration,
   WafIpset,
+  Wafv2WebAclAssociation,
 
   // Cloudwatch
   CloudwatchLogGroup,
