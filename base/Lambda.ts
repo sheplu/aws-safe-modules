@@ -15,13 +15,12 @@ export class LambdaFunction extends aws_LambdaFunction {
   }
 };
 
-
 const ajv = new Ajv({ allErrors: true });
 
 const schema = {
   type: "object",
   properties: {
-    memorySize: { type: "number", minimum: 128, multipleOf: 64 },
+    memorySize: { type: "number", minimum: 128, maximum: 10240, multipleOf: 64 },
     runtime: { enum: ["nodejs22.x", "python3.13", "java21", "ruby3.4", "provided.al2023"] },
   },
   required: ["memorySize", "runtime"],
