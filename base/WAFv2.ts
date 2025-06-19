@@ -1,5 +1,6 @@
 import { WafIpset as aws_WafIpset, WafIpsetConfig } from '@cdktf/provider-aws/lib/waf-ipset';
 import { Wafv2WebAcl as aws_Wafv2WebAcl, Wafv2WebAclConfig } from '@cdktf/provider-aws/lib/wafv2-web-acl';
+import { Wafv2WebAclAssociation as aws_Wafv2WebAclAssociation, Wafv2WebAclAssociationConfigA } from '@cdktf/provider-aws/lib/wafv2-web-acl-association';
 import { Wafv2WebAclLoggingConfiguration as aws_Wafv2WebAclLoggingConfiguration, Wafv2WebAclLoggingConfigurationConfig } from '@cdktf/provider-aws/lib/wafv2-web-acl-logging-configuration';
 import { Construct } from 'constructs';
 
@@ -22,6 +23,14 @@ export class Wafv2WebAclLoggingConfiguration extends aws_Wafv2WebAclLoggingConfi
 
 export class WafIpset extends aws_WafIpset {
     constructor(scope: Construct, id: string, config: WafIpsetConfig) {
+        const checkedConfig = { ...config };
+
+        super(scope, `asm/${id}`, checkedConfig);
+    }
+};
+
+export class Wafv2WebAclAssociation extends aws_Wafv2WebAclAssociation {
+    constructor(scope: Construct, id: string, config: Wafv2WebAclAssociationConfigA) {
         const checkedConfig = { ...config };
 
         super(scope, `asm/${id}`, checkedConfig);
