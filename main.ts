@@ -53,6 +53,14 @@ import {
   ApiGatewayAccount
 } from "./base/AWSProvider";
 
+import {
+  ApiGatewayBasePathMapping,
+  ApiGatewayDeployment,
+  ApiGatewayGatewayResponse,
+  ApiGatewayRestApi,
+  ApiGatewayStage
+} from "./base/ApiGateway";
+
 import { ManagedS3 } from "./managed/S3Bucket";
 import { ManagedWAF } from "./managed/WAFv2";
 
@@ -62,6 +70,13 @@ export {
   TerraformOutput,
   DataAwsCallerIdentity,
   ApiGatewayAccount,
+
+  // ApiGatewy
+  ApiGatewayBasePathMapping,
+  ApiGatewayDeployment,
+  ApiGatewayGatewayResponse,
+  ApiGatewayRestApi,
+  ApiGatewayStage,
 
   // Route53
   DataAwsRoute53Zone,
