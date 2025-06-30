@@ -14,7 +14,8 @@ import {
   IamPolicy,
   IamPolicyAttachment,
   IamRole,
-  IamRolePolicy
+  IamRolePolicy,
+  IamRolePolicyAttachment
 } from "./base/IAM";
 import { EcrRepository, EcrLifecyclePolicy } from "./base/ECR";
 import { Wafv2WebAcl, Wafv2WebAclLoggingConfiguration, WafIpset, Wafv2WebAclAssociation } from "./base/WAFv2";
@@ -28,12 +29,29 @@ import {
   CloudfrontOriginAccessIdentity,
   CloudfrontPublicKey
 } from "./base/Cloudfront";
-import { LambdaFunction } from "./base/Lambda";
-import { DynamodbTable } from "./base/Dynamodb";
+import { LambdaFunction, LambdaPermission } from "./base/Lambda";
+import {
+  DynamodbTable,
+  DynamodbGlobalTable,
+  DynamodbResourcePolicy,
+  DynamodbTableExport,
+  DynamodbTableItem
+ } from "./base/Dynamodb";
 import { DbInstance } from "./base/RDS";
 import { SqsQueue } from "./base/SQS";
 import { SsmParameter } from "./base/SSM";
-import { DataAwsRoute53Zone } from "./base/Route53";
+import {
+  DataAwsRoute53Zone,
+  AcmCertificate,
+  AcmCertificateValidation,
+  DataAwsRoute53Records,
+  DataAwsRoute53Zones,
+  Route53DelegationSet,
+  Route53HealthCheck,
+  Route53QueryLog,
+  Route53Record,
+  Route53Zone
+} from "./base/Route53";
 import {
   DataAwsSubnets,
   DataAwsVpc,
@@ -58,7 +76,18 @@ import {
   ApiGatewayDeployment,
   ApiGatewayGatewayResponse,
   ApiGatewayRestApi,
-  ApiGatewayStage
+  ApiGatewayStage,
+  ApiGatewayAuthorizer,
+  ApiGatewayClientCertificate,
+  ApiGatewayDomainName,
+  ApiGatewayIntegration,
+  ApiGatewayIntegrationResponse,
+  ApiGatewayMethod,
+  ApiGatewayMethodResponse,
+  ApiGatewayMethodSettings,
+  ApiGatewayRequestValidator,
+  ApiGatewayResource,
+  ApiGatewayVpcLink
 } from "./base/ApiGateway";
 
 import { ManagedS3 } from "./managed/S3Bucket";
@@ -77,9 +106,29 @@ export {
   ApiGatewayGatewayResponse,
   ApiGatewayRestApi,
   ApiGatewayStage,
+  ApiGatewayAuthorizer,
+  ApiGatewayClientCertificate,
+  ApiGatewayDomainName,
+  ApiGatewayIntegration,
+  ApiGatewayIntegrationResponse,
+  ApiGatewayMethod,
+  ApiGatewayMethodResponse,
+  ApiGatewayMethodSettings,
+  ApiGatewayRequestValidator,
+  ApiGatewayResource,
+  ApiGatewayVpcLink,
 
   // Route53
   DataAwsRoute53Zone,
+  AcmCertificate,
+  AcmCertificateValidation,
+  DataAwsRoute53Records,
+  DataAwsRoute53Zones,
+  Route53DelegationSet,
+  Route53HealthCheck,
+  Route53QueryLog,
+  Route53Record,
+  Route53Zone,
   
   // S3
   S3Bucket,
@@ -97,6 +146,7 @@ export {
   IamPolicyAttachment,
   IamRole,
   IamRolePolicy,
+  IamRolePolicyAttachment,
 
   // ECR
   EcrRepository,
@@ -123,9 +173,14 @@ export {
 
   // Lambda
   LambdaFunction,
+  LambdaPermission,
 
   // DynamoDB
   DynamodbTable,
+  DynamodbGlobalTable,
+  DynamodbResourcePolicy,
+  DynamodbTableExport,
+  DynamodbTableItem,
 
   // RDS
   DbInstance,
