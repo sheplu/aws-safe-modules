@@ -1,6 +1,6 @@
 {
   "name": "@sheplu/aws-safe-modules",
-  "version": "0.0.58",
+  "version": "0.0.59",
   "main": "main.js",
   "types": "main.ts",
   "license": "MPL-2.0",
