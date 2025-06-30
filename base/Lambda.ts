@@ -1,6 +1,7 @@
 import { LambdaFunction as aws_LambdaFunction, LambdaFunctionConfig } from '@cdktf/provider-aws/lib/lambda-function';
 import { Construct } from 'constructs';
 import { Ajv } from "ajv";
+import { LambdaPermission as aws_LambdaPermission, LambdaPermissionConfig } from '@cdktf/provider-aws/lib/lambda-permission';
 
 export class LambdaFunction extends aws_LambdaFunction {
   constructor(scope: Construct, id: string, config: LambdaFunctionConfig) {
@@ -13,6 +14,14 @@ export class LambdaFunction extends aws_LambdaFunction {
     }
     super(scope, `asm/${id}`, checkedConfig);
   }
+};
+
+export class LambdaPermission extends aws_LambdaPermission {
+    constructor(scope: Construct, id: string, config: LambdaPermissionConfig) {
+        const checkedConfig = { ...config };
+
+        super(scope, `asm/${id}`, checkedConfig);
+    }
 };
 
 const ajv = new Ajv({ allErrors: true });
