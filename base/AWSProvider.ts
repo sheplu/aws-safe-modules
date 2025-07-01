@@ -1,7 +1,7 @@
 import { Construct } from 'constructs';
 import { AwsProvider as aws_AwsProvider, AwsProviderConfig, AwsProviderDefaultTags } from "@cdktf/provider-aws/lib/provider";
 import { validate } from '../check-tags';
-import { S3Backend as aws_S3Backend, S3BackendConfig, TerraformOutput as aws_TerraformOutput, TerraformOutputConfig } from 'cdktf';
+import { S3Backend as aws_S3Backend, S3BackendConfig, TerraformOutput as aws_TerraformOutput, TerraformOutputConfig, DataTerraformRemoteStateS3 as aws_DataTerraformRemoteStateS3, DataTerraformRemoteStateS3Config } from 'cdktf';
 import { DataAwsCallerIdentity as aws_DataAwsCallerIdentity, DataAwsCallerIdentityConfig } from '@cdktf/provider-aws/lib/data-aws-caller-identity';
 import { ApiGatewayAccount as aws_ApiGatewayAccount, ApiGatewayAccountConfig } from '@cdktf/provider-aws/lib/api-gateway-account';
 
@@ -16,6 +16,14 @@ export class AwsProvider extends aws_AwsProvider {
         }
 
         super(scope, `asm/${id}`, checkedConfig);
+    }
+};
+
+export class DataTerraformRemoteStateS3 extends aws_DataTerraformRemoteStateS3 {
+    constructor(scope: Construct, id: string, config: DataTerraformRemoteStateS3Config) {
+        const checkedConfig = { ...config };
+
+        super(scope, id, checkedConfig);
     }
 };
 
