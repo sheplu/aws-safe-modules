@@ -68,7 +68,8 @@ import {
   S3Backend,
   TerraformOutput,
   DataAwsCallerIdentity,
-  ApiGatewayAccount
+  ApiGatewayAccount,
+  DataTerraformRemoteStateS3
 } from "./base/AWSProvider";
 
 import {
@@ -99,6 +100,7 @@ export {
   TerraformOutput,
   DataAwsCallerIdentity,
   ApiGatewayAccount,
+  DataTerraformRemoteStateS3,
 
   // ApiGatewy
   ApiGatewayBasePathMapping,
