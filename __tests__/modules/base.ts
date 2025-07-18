@@ -9,7 +9,7 @@ describe("Modules Base", () => {
       folderList = readdirSync('./base')
     });
 
-    it("should should have 15 files", () => {
+    it("should should have 16 files", () => {
       expect(folderList.length).toEqual(15);
     });
 
@@ -19,6 +19,7 @@ describe("Modules Base", () => {
         'ApiGateway.ts',
         'CloudWatch.ts',
         'Cloudfront.ts',
+        'Cost.ts',
         'Dynamodb.ts',
         'ECR.ts',
         'IAM.ts',

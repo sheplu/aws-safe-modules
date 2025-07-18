@@ -91,6 +91,10 @@ import {
   ApiGatewayVpcLink
 } from "./base/ApiGateway";
 
+import {
+  CurReportDefinition
+} from "./base/Cost";
+
 import { ManagedS3 } from "./managed/S3Bucket";
 import { ManagedWAF } from "./managed/WAFv2";
 
@@ -119,6 +123,9 @@ export {
   ApiGatewayRequestValidator,
   ApiGatewayResource,
   ApiGatewayVpcLink,
+
+  // Cost
+  CurReportDefinition,
 
   // Route53
   DataAwsRoute53Zone,
