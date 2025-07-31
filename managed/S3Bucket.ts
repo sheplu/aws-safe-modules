@@ -45,7 +45,7 @@ export class ManagedS3 extends Construct {
 			dependsOn: [myBucketVersioning],
 		});
 
-		const myBucketPolicy = new DataAwsIamPolicyDocument(this, 'bucket-iam-policy', {
+		const bucketPermission = {
 			statement: [{
 				actions: ['s3:*'],
 				resources: [`${myBucket.arn}/*`],
@@ -60,7 +60,13 @@ export class ManagedS3 extends Construct {
 					values: ['false'],
 				}],
 			}],
-		});
+		};
+		
+		if(config.addBucketPermission) {
+			bucketPermission.statement.push(config.addBucketPermission);
+		}
+		
+		const myBucketPolicy = new DataAwsIamPolicyDocument(this, 'bucket-iam-policy', bucketPermission);
 
 		new S3BucketPolicy(this, 'bucket-policy', {
 			bucket: myBucket.id,
