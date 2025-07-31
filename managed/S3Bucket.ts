@@ -63,7 +63,7 @@ export class ManagedS3 extends Construct {
 		};
 		
 		if(config.addBucketPermission) {
-			bucketPermission.statement.push(config.addBucketPermission);
+			bucketPermission.statement.push(...config.addBucketPermission);
 		}
 		
 		const myBucketPolicy = new DataAwsIamPolicyDocument(this, 'bucket-iam-policy', bucketPermission);
