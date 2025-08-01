@@ -92,6 +92,7 @@ import {
 } from "./base/ApiGateway";
 
 import {
+  BcmdataexportsExport,
   CurReportDefinition
 } from "./base/Cost";
 
@@ -125,6 +126,7 @@ export {
   ApiGatewayVpcLink,
 
   // Cost
+  BcmdataexportsExport,
   CurReportDefinition,
 
   // Route53
