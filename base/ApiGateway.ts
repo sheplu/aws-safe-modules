@@ -1,3 +1,4 @@
+import { ApiGatewayApiKey as aws_ApiGatewayApiKey, ApiGatewayApiKeyConfig } from '@cdktf/provider-aws/lib/api-gateway-api-key';
 import { ApiGatewayAuthorizer as aws_ApiGatewayAuthorizer, ApiGatewayAuthorizerConfig } from '@cdktf/provider-aws/lib/api-gateway-authorizer';
 import { ApiGatewayBasePathMapping as aws_ApiGatewayBasePathMapping, ApiGatewayBasePathMappingConfig } from '@cdktf/provider-aws/lib/api-gateway-base-path-mapping';
 import { ApiGatewayClientCertificateConfig, ApiGatewayClientCertificate as aws_ApiGatewayClientCertificate } from '@cdktf/provider-aws/lib/api-gateway-client-certificate';
@@ -140,6 +141,15 @@ export class ApiGatewayMethodSettings extends aws_ApiGatewayMethodSettings {
 export class ApiGatewayResource extends aws_ApiGatewayResource {
     constructor(scope: Construct, id: string, config: ApiGatewayResourceConfig) {
         const checkedConfig = { ...config };
+
+        super(scope, `asm/${id}`, checkedConfig);
+    }
+};
+
+export class ApiGatewayApiKey extends aws_ApiGatewayApiKey {
+    constructor(scope: Construct, id: string, config: ApiGatewayApiKeyConfig) {
+        const checkedConfig = { ...config };
+        checkedConfig.name = `${config?.name}-agwk`;
 
         super(scope, `asm/${id}`, checkedConfig);
     }

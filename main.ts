@@ -88,7 +88,8 @@ import {
   ApiGatewayMethodSettings,
   ApiGatewayRequestValidator,
   ApiGatewayResource,
-  ApiGatewayVpcLink
+  ApiGatewayVpcLink,
+  ApiGatewayApiKey
 } from "./base/ApiGateway";
 
 import {
@@ -124,6 +125,7 @@ export {
   ApiGatewayRequestValidator,
   ApiGatewayResource,
   ApiGatewayVpcLink,
+  ApiGatewayApiKey,
 
   // Cost
   BcmdataexportsExport,
