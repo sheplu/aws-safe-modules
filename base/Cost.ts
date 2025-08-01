@@ -13,7 +13,18 @@ export class CurReportDefinition extends aws_CurReportDefinition {
 
 export class BcmdataexportsExport extends aws_BcmdataexportsExport {
     constructor(scope: Construct, id: string, config: BcmdataexportsExportConfig) {
-        const checkedConfig = { ...config };
+        const checkedConfig = {
+            ...config,
+            ...Array.isArray(config.export) ? {
+                export: config.export?.map((item) => ({
+                    ...item,
+                    name: `${item.name}-curv2`
+                }))
+            } : null
+        };
+        // if (Array.isArray(checkedConfig.export)) {
+        //     checkedConfig.export.forEach(item => item.name = `${item.name}-curv2`)
+        // }
 
         super(scope, `asm/${id}`, checkedConfig);
     }
