@@ -89,7 +89,9 @@ import {
   ApiGatewayRequestValidator,
   ApiGatewayResource,
   ApiGatewayVpcLink,
-  ApiGatewayApiKey
+  ApiGatewayApiKey,
+  ApiGatewayUsagePlan,
+  ApiGatewayUsagePlanKey
 } from "./base/ApiGateway";
 
 import {
@@ -126,6 +128,8 @@ export {
   ApiGatewayResource,
   ApiGatewayVpcLink,
   ApiGatewayApiKey,
+  ApiGatewayUsagePlan,
+  ApiGatewayUsagePlanKey,
 
   // Cost
   BcmdataexportsExport,

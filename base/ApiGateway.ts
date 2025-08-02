@@ -14,6 +14,8 @@ import { ApiGatewayRequestValidator as aws_ApiGatewayRequestValidator, ApiGatewa
 import { ApiGatewayResource as aws_ApiGatewayResource, ApiGatewayResourceConfig } from '@cdktf/provider-aws/lib/api-gateway-resource';
 import { ApiGatewayRestApi as aws_ApiGatewayRestApi, ApiGatewayRestApiConfig } from '@cdktf/provider-aws/lib/api-gateway-rest-api';
 import { ApiGatewayStage as aws_ApiGatewayStage, ApiGatewayStageConfig } from '@cdktf/provider-aws/lib/api-gateway-stage';
+import { ApiGatewayUsagePlan as aws_ApiGatewayUsagePlan, ApiGatewayUsagePlanConfig } from '@cdktf/provider-aws/lib/api-gateway-usage-plan';
+import { ApiGatewayUsagePlanKey as aws_ApiGatewayUsagePlanKey, ApiGatewayUsagePlanKeyConfig } from '@cdktf/provider-aws/lib/api-gateway-usage-plan-key';
 import { ApiGatewayVpcLink as aws_ApiGatewayVpcLink, ApiGatewayVpcLinkConfig } from '@cdktf/provider-aws/lib/api-gateway-vpc-link';
 import { Construct } from 'constructs';
 
@@ -150,6 +152,23 @@ export class ApiGatewayApiKey extends aws_ApiGatewayApiKey {
     constructor(scope: Construct, id: string, config: ApiGatewayApiKeyConfig) {
         const checkedConfig = { ...config };
         checkedConfig.name = `${config?.name}-agwk`;
+
+        super(scope, `asm/${id}`, checkedConfig);
+    }
+};
+
+export class ApiGatewayUsagePlan extends aws_ApiGatewayUsagePlan {
+    constructor(scope: Construct, id: string, config: ApiGatewayUsagePlanConfig) {
+        const checkedConfig = { ...config };
+        checkedConfig.name = `${config?.name}-agwup`;
+
+        super(scope, `asm/${id}`, checkedConfig);
+    }
+};
+
+export class ApiGatewayUsagePlanKey extends aws_ApiGatewayUsagePlanKey {
+    constructor(scope: Construct, id: string, config: ApiGatewayUsagePlanKeyConfig) {
+        const checkedConfig = { ...config };
 
         super(scope, `asm/${id}`, checkedConfig);
     }
