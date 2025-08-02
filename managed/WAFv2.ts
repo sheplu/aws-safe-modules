@@ -1,10 +1,18 @@
 import { Construct } from 'constructs';
 import { CloudwatchLogGroup, CloudwatchLogResourcePolicy, DataAwsIamPolicyDocument, Wafv2WebAcl, Wafv2WebAclLoggingConfiguration } from '../main';
+import { Wafv2WebAclConfig } from '@cdktf/provider-aws/lib/wafv2-web-acl';
+
+export type ManagedWAFConfig = {
+	logGroup: string;
+	logPolicy: string;
+	waf: Wafv2WebAclConfig,
+}
 
 export class ManagedWAF extends Construct {
+	// eslint-disable-next-line @typescript-eslint/no-explicit-any
 	public readonly instance: any;
 
-	constructor(scope: Construct, id: string, config: any) {
+	constructor(scope: Construct, id: string, config: ManagedWAFConfig) {
 		super(scope, id);
 
         const myWaf = new Wafv2WebAcl(this, 'wafv2', config.waf)
