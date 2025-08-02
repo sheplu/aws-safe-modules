@@ -1,10 +1,18 @@
 import { Construct } from 'constructs';
 import { DataAwsIamPolicyDocument, S3Bucket, S3BucketLifecycleConfiguration, S3BucketObjectLockConfigurationA, S3BucketOwnershipControls, S3BucketPolicy, S3BucketVersioningA } from '../main';
 
+export type ManagedS3Config = {
+	bucket?: string,
+	worm?: boolean,
+	// eslint-disable-next-line @typescript-eslint/no-explicit-any
+	addBucketPermission?: Array<any>
+}
+
 export class ManagedS3 extends Construct {
+	// eslint-disable-next-line @typescript-eslint/no-explicit-any
 	public readonly instance: any;
 
-	constructor(scope: Construct, id: string, config: any) {
+	constructor(scope: Construct, id: string, config: ManagedS3Config) {
 		super(scope, id);
 
         const myBucket = new S3Bucket(this, 'bucket', {
@@ -61,11 +69,11 @@ export class ManagedS3 extends Construct {
 				}],
 			}],
 		};
-		
+
 		if(config.addBucketPermission) {
 			bucketPermission.statement.push(...config.addBucketPermission);
 		}
-		
+
 		const myBucketPolicy = new DataAwsIamPolicyDocument(this, 'bucket-iam-policy', bucketPermission);
 
 		new S3BucketPolicy(this, 'bucket-policy', {

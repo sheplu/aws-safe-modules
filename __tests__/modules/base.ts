@@ -1,9 +1,9 @@
-import "cdktf/lib/testing/adapters/jest"; 
+import "cdktf/lib/testing/adapters/jest";
 import { readdirSync } from "node:fs";
 
 describe("Modules Base", () => {
   describe("Count number of modules", () => {
-    let folderList: Array<String>;
+    let folderList: Array<string>;
 
     beforeAll(() => {
       folderList = readdirSync('./base')
@@ -14,7 +14,7 @@ describe("Modules Base", () => {
     });
 
     it("should should have the exact files", () => {
-      const files: Array<String> = [
+      const files: Array<string> = [
         'AWSProvider.ts',
         'ApiGateway.ts',
         'CloudWatch.ts',
@@ -32,7 +32,7 @@ describe("Modules Base", () => {
         'VPC.ts',
         'WAFv2.ts'
       ];
-      
+
       expect(folderList).toEqual(files);
     });
   });
