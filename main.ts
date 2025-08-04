@@ -1,4 +1,4 @@
-import { 
+import {
   S3Bucket,
   S3BucketCorsConfiguration,
   S3BucketLifecycleConfiguration,
@@ -20,7 +20,7 @@ import {
 import { EcrRepository, EcrLifecyclePolicy } from "./base/ECR";
 import { Wafv2WebAcl, Wafv2WebAclLoggingConfiguration, WafIpset, Wafv2WebAclAssociation } from "./base/WAFv2";
 import { CloudwatchLogGroup, CloudwatchLogResourcePolicy } from "./base/CloudWatch";
-import { 
+import {
   CloudfrontDistribution,
   CloudfrontFunction,
   CloudfrontOriginAccessControl,
@@ -99,6 +99,12 @@ import {
   CurReportDefinition
 } from "./base/Cost";
 
+import {
+  EcsCluster,
+  EcsService,
+	EcsTaskDefinition
+} from "./base/ECS";
+
 import { ManagedS3 } from "./managed/S3Bucket";
 import { ManagedWAF } from "./managed/WAFv2";
 
@@ -146,7 +152,7 @@ export {
   Route53QueryLog,
   Route53Record,
   Route53Zone,
-  
+
   // S3
   S3Bucket,
   S3BucketCorsConfiguration,
@@ -217,6 +223,10 @@ export {
   VpcSecurityGroupEgressRule,
   VpcSecurityGroupIngressRule,
   Vpc,
+
+	EcsCluster,
+  EcsService,
+	EcsTaskDefinition,
 
   // Managed
   ManagedS3,
