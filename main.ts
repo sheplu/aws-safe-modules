@@ -111,6 +111,11 @@ import {
 	AlbTargetGroup
 } from "./base/ALB";
 
+import {
+  AppautoscalingPolicy,
+  AppautoscalingTarget
+} from "./base/AppAutoscalling";
+
 import { ManagedS3 } from "./managed/S3Bucket";
 import { ManagedWAF } from "./managed/WAFv2";
 
@@ -237,6 +242,9 @@ export {
 	Alb,
   AlbListener,
 	AlbTargetGroup,
+
+	AppautoscalingPolicy,
+  AppautoscalingTarget,
 
   // Managed
   ManagedS3,
