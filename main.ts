@@ -105,6 +105,12 @@ import {
 	EcsTaskDefinition
 } from "./base/ECS";
 
+import {
+  Alb,
+  AlbListener,
+	AlbTargetGroup
+} from "./base/ALB";
+
 import { ManagedS3 } from "./managed/S3Bucket";
 import { ManagedWAF } from "./managed/WAFv2";
 
@@ -227,6 +233,10 @@ export {
 	EcsCluster,
   EcsService,
 	EcsTaskDefinition,
+
+	Alb,
+  AlbListener,
+	AlbTargetGroup,
 
   // Managed
   ManagedS3,
