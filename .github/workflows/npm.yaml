@@ -30,4 +30,4 @@ jobs:
       - name: publish
         env:
           NPM_TOKEN: ${{secrets.NPM_TOKEN}}
-        run: (cp package.json .npmrc dist/ && cd dist && rm tsconfig.tsbuildinfo && rm -rf node-modules && npm publish --access public)
+        run: (cp package.json README.md .npmrc dist/ && cd dist && rm tsconfig.tsbuildinfo && rm -rf node-modules && npm publish --access public)
