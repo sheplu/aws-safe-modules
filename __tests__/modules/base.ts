@@ -9,19 +9,22 @@ describe("Modules Base", () => {
       folderList = readdirSync('./base')
     });
 
-    it("should should have 16 files", () => {
-      expect(folderList.length).toEqual(15);
+    it("should should have 19 files", () => {
+      expect(folderList.length).toEqual(19);
     });
 
     it("should should have the exact files", () => {
       const files: Array<string> = [
+				'ALB.ts',
         'AWSProvider.ts',
         'ApiGateway.ts',
+				'AppAutoscalling.ts',
         'CloudWatch.ts',
         'Cloudfront.ts',
         'Cost.ts',
         'Dynamodb.ts',
         'ECR.ts',
+				'ECS.ts',
         'IAM.ts',
         'Lambda.ts',
         'RDS.ts',
