@@ -1,0 +1,40 @@
+name: CI Test
+on:
+  push:
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          registry-url: 'https://registry.npmjs.org'
+
+      - name: NPM install
+        run: |
+          npm install
+
+      - name: NPM Lint
+        run: |
+          npm run lint
+
+      - name: NPM Audit
+        continue-on-error: true
+        run: |
+          npm audit
+
+      - name: NPM Test
+        run: |
+          npm run test
+
+      - name: NPM Build
+        run: |
+          npm run build
