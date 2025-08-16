@@ -4,6 +4,8 @@
   "main": "main.js",
   "types": "main.ts",
   "license": "MPL-2.0",
+	"keywords": ["cdktf", "aws", "security", "compliance", "iac", "terraform"],
+	"description": "A collection of CDKTF modules for AWS, with security and compliance in mind",
   "scripts": {
     "get": "cdktf get",
     "build": "tsc",
