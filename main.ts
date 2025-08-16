@@ -113,7 +113,8 @@ import {
 
 import {
   AppautoscalingPolicy,
-  AppautoscalingTarget
+  AppautoscalingTarget,
+	AppautoscalingScheduledAction
 } from "./base/AppAutoscalling";
 
 import { ManagedS3 } from "./managed/S3Bucket";
@@ -245,6 +246,7 @@ export {
 
 	AppautoscalingPolicy,
   AppautoscalingTarget,
+	AppautoscalingScheduledAction,
 
   // Managed
   ManagedS3,
