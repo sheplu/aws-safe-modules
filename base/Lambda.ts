@@ -32,7 +32,7 @@ const schema = {
     memorySize: { type: "number", minimum: 128, maximum: 10240, multipleOf: 64 },
     runtime: { enum: ["nodejs22.x", "python3.13", "java21", "ruby3.4", "provided.al2023"] },
   },
-  required: ["memorySize", "runtime"],
+  required: ["memorySize"],
   additionalProperties: true,
 }
 
