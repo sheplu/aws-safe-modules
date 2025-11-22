@@ -18,6 +18,11 @@
     "upgrade:next": "npm i cdktf@next cdktf-cli@next",
     "lint": "eslint ."
   },
+	"repository": {
+    "type": "git",
+    "url": "git+https://github.com/sheplu/aws-safe-modules.git"
+  },
+	"author": "Jean Burellier",
   "engines": {
     "node": ">=24.0"
   },
