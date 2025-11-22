@@ -44,4 +44,4 @@ jobs:
           fi
 
       - name: publish
-        run: (cp package.json README.md .npmrc dist/ && cd dist && rm tsconfig.tsbuildinfo && rm -rf node-modules && npm publish --access public)
+        run: (cp package.json README.md dist/ && cd dist && rm tsconfig.tsbuildinfo && rm -rf node-modules && npm publish --access public)
