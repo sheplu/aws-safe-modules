@@ -6,9 +6,10 @@ on:
 jobs:
   publish:
     runs-on: ubuntu-latest
+    environment: prod
     permissions:
       contents: read
-      packages: write
+      id-token: write
 
     steps:
       - name: Checkout
@@ -43,6 +44,4 @@ jobs:
           fi
 
       - name: publish
-        env:
-          NPM_TOKEN: ${{secrets.NPM_TOKEN}}
         run: (cp package.json README.md .npmrc dist/ && cd dist && rm tsconfig.tsbuildinfo && rm -rf node-modules && npm publish --access public)
