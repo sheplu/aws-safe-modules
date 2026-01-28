@@ -38,6 +38,7 @@ import {
   DynamodbTableItem
  } from "./base/Dynamodb";
 import { DbInstance } from "./base/RDS";
+import { SnsTopic } from "./base/SNS";
 import { SqsQueue } from "./base/SQS";
 import { SsmParameter } from "./base/SSM";
 import {
@@ -219,6 +220,9 @@ export {
 
   // RDS
   DbInstance,
+
+  // SNS
+  SnsTopic,
 
   // SQS
   SqsQueue,

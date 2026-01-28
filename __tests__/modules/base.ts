@@ -9,8 +9,8 @@ describe("Modules Base", () => {
       folderList = readdirSync('./base')
     });
 
-    it("should should have 19 files", () => {
-      expect(folderList.length).toEqual(19);
+    it("should should have 20 files", () => {
+      expect(folderList.length).toEqual(20);
     });
 
     it("should should have the exact files", () => {
@@ -30,6 +30,7 @@ describe("Modules Base", () => {
         'RDS.ts',
         'Route53.ts',
         'S3Bucket.ts',
+        'SNS.ts',
         'SQS.ts',
         'SSM.ts',
         'VPC.ts',
